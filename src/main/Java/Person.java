@@ -1,3 +1,5 @@
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -10,25 +12,19 @@ public class Person {
         MALE, FEMALE
     }
 
-    private String name;
-    private LocalDate birthday;
-    private Sex gender;
-    private String emailAddress;
-
-    List<Person> roster = new ArrayList<>();
-    CheckPerson tester;
+    String name;
+    LocalDate birthday;
+    Sex gender;
+    String emailAddress;
+  //  Integer age;
 
     public Person() {
+        this.name = "";
+        this.birthday = LocalDate.now();
+        gender = null;
     }
 
-    public Person(String name, LocalDate birthday, Sex gender, String emailAddress) {
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.emailAddress = emailAddress;
-    }
-
-    public Person(String name) {
+    public Person(String name, LocalDate birthday, Sex gender, String emailAddress){
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -73,27 +69,10 @@ public class Person {
     }
 
 
-    public static void compareByAge(){
-    Comparator<Person> byAge = Comparator.comparingInt(Person::getAge);
-    }
-
-
-    public static void printPersons(List<Person> roster, CheckPerson tester) {
-        for (Person p : roster) {
-            if (tester.test(p)) {
-                p.printPerson();
-            }
-        }
-    }
-
-
-    public String printPerson() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", birthday=" + birthday +
-                ", gender=" + gender +
-                ", emailAddress='" + emailAddress + '\'' +
-                '}';
+    public String printAge(){
+        String printAge = "Name: " + this.name + " is " + this.getAge() + " years old.";
+        System.out.println(printAge);
+        return printAge;
     }
 
 
