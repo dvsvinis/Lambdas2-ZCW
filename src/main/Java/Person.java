@@ -16,7 +16,6 @@ public class Person {
     LocalDate birthday;
     Sex gender;
     String emailAddress;
-  //  Integer age;
 
     public Person() {
         this.name = "";
